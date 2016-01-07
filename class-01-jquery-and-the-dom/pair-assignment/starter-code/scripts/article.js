@@ -1,7 +1,6 @@
 var articles = [];
 
 function Article (opts) {
-
   this.title = opts.title;
   this.category = opts.category;
   this.author = opts.author;
@@ -15,10 +14,12 @@ Article.prototype.toHtml = function() {
 
   $newArticle.data('category', this.category);
 
-  // TODO: Use jQuery to fill in the template with properties
-  // from this particular Article instance. We need to fill in:
-  // the author name and url, the article title and body, and the
+  // TODO: ...the
   // publication date.
+  $newArticle.find('address').text(this.author);
+  $newArticle.find('a[href]').attr('href', 'this.authorUrl');// TODO: figure out why authorUrl isn't working. The DOM shows it doesn't exist.
+  $newArticle.find('h1').text(this.title);
+  $newArticle.find('section').html(this.body);
 
   // Include the publication date as a 'title' attribute to show on hover:
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
