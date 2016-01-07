@@ -11,13 +11,12 @@ function Article (opts) {
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-
   $newArticle.data('category', this.category);
 
   // TODO: ...the
   // publication date.
-  $newArticle.find('address').text(this.author);
-  $newArticle.find('a[href]').attr('href', 'this.authorUrl');// TODO: figure out why authorUrl isn't working. The DOM shows it doesn't exist.
+  $newArticle.find('a').attr('href', this.authorUrl).text(this.author);
+  //$newArticle.find('a').text(this.author);
   $newArticle.find('h1').text(this.title);
   $newArticle.find('section').html(this.body);
 
