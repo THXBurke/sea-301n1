@@ -12,13 +12,11 @@ function Article (opts) {
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
   $newArticle.data('category', this.category);
-
-  // TODO: ...the
-  // publication date.
-  $newArticle.find('a').attr('href', this.authorUrl).text(this.author);
-  //$newArticle.find('a').text(this.author);
-  $newArticle.find('h1').text(this.title);
-  $newArticle.find('section').html(this.body);
+  // TODO: None remaining
+  $newArticle.find('a').attr('href', this.authorUrl).text(this.author);//finds the anchor tag and updates/gives it an href value. The .text() is just another method chained to reduce code. Explicitly it means $newArticle.find('a').text(this.author).
+  $newArticle.find('h1').text(this.title);//finds any h1 tag within article and changes the text to whatever the new article title is.
+  $newArticle.find('section').html(this.body);//finds the section and puts the body data into it. Using .html() method since the body data is stored as html elements.
+  $newArticle.find('time[pubdate]').attr('pubdate', this.publishedOn);//creates a new pubdate attribute using the post's publishedOn data.
 
   // Include the publication date as a 'title' attribute to show on hover:
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
@@ -28,8 +26,8 @@ Article.prototype.toHtml = function() {
 
   $newArticle.append('<hr>');
 
-  // TODO: This cloned article is no longer a template, so we should remove that class...
-  $newArticle.removeClass('template');
+  // TODO: None remaining
+  $newArticle.removeClass('template');//removes the template class since it is no longer a template, but an instance of that template being used.
 
   return $newArticle;
 };
