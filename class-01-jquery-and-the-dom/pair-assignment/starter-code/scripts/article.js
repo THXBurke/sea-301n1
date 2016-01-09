@@ -11,7 +11,7 @@ function Article (opts) {
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-  $newArticle.data('category', this.category);
+  $newArticle.attr('data-category', this.category);
   // TODO: None remaining
   $newArticle.find('a').attr('href', this.authorUrl).text(this.author);//finds the anchor tag and updates/gives it an href value. The .text() is just another method chained to reduce code. Explicitly it means $newArticle.find('a').text(this.author).
   $newArticle.find('h1').text(this.title);//finds any h1 tag within article and changes the text to whatever the new article title is.
